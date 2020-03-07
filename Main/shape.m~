@@ -1,4 +1,4 @@
-function [SHAPE] = shape(I)
+function [outputArg1,outputArg2] = shape(inputArg1,inputArg2)
 % 1. Circular
 % 2. Banana
 % 3. Pear

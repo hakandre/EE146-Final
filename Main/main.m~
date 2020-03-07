@@ -3,6 +3,11 @@ clear
 close all
 I = imread('banna.jpg');
 figure;
-imshow(I(:,:,1))
-[edgeImage, RGB, ]= processing(I);
+imshow(I)
+
+colorType = color(I); % 1 - Red, 2 - Green, 3 - Blue, 4 - Yellow, 5 - Orange, 6 - Purple
+
+
+
+
 

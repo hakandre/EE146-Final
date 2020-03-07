@@ -2,8 +2,10 @@ function [COLOR] = color(I)
     I_R = I(:,:,1);
     I_G = I(:,:,2);
     I_B = I(:,:,3);
-    COLOR = I;
-    
+    hR = histogram(I_R);
+    hG = histogram(I_G);
+    hB = histogram(I_B);
+    COL
 %{
 color code:
 1: red

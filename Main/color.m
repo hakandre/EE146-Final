@@ -1,8 +1,22 @@
-function [COLOR] = color(I)
-    I_R = I(:,:,1);
-    I_G = I(:,:,2);
-    I_B = I(:,:,3);
-    COLOR = I;
+function [SumR, SumG, SumB] = color(I)
+[R,G,B] = imsplit(I);
+    
+    
+figure
+histogram(R);
+title("RED")
+figure
+histogram(G);
+title("GREEN")
+figure
+histogram(B);
+title("BLUE")
+
+    SumR = sum(R(20:200));
+    SumG = sum(G(20:200));
+    SumB = sum(B(20:200));
+    
+    imshow(R)
     
 %{
 color code:

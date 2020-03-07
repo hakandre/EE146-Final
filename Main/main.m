@@ -1,8 +1,8 @@
 %% Final Project Program
 clear
 close all
-I = imread('bannan.jpg');
-
-
+I = imread('banna.jpg');
+figure;
+imshow(I(:,:,1))
 
 

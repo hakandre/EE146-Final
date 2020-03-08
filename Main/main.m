@@ -1,7 +1,7 @@
 %% Final Project Program
 clear
 close all
-I = imread('red_commie.png');
+I = imread('blue.jpg');
 figure;
 imshow(I)
 

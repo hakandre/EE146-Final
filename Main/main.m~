@@ -1,15 +1,20 @@
 %% Final Project Program
 clear
 close all
-I = imread('Appfel.png');
+Iblue = imread('blueberry.jpg');
+Iyellow=imread('banna.jpg');
+Igreen = imread('greenApple.jpg');
+Ired = imread('Appfel.jpg');
+Iorange = imread('Orange.jpg');
 figure;
-imshow(I)
+%imshow(I)
 
-[SumR, SumG, SumB] = color(I); % 1 - Red, 2 - Green, 3 - Blue, 4 - Yellow, 5 - Orange, 6 - Purple
-
-shapeType = shape(I); % 1. Circular 2. Banana 3. Pear
-
-template = tmatch(I); % returns string name of detected fruit.
+[bSumR, bSumG, bSumB,bdRG,bdRB,bdGB, colorBlue] = color(Iblue); % 1 - Red, 2 - Green, 3 - Blue, 4 - Yellow, 5 - Orange, 6 - Purple
+[rSumR, rSumG, rSumB,rdRG,rdRB,rdGB, colorred] = color(Ired);
+[gSumR, gSumG, gSumB,gdRG,dRB,bdGB, colorgreen] = color(Igreen);
+[ySumR, ySumG, ySumB,bdRG,bdRB,bdGB, coloryellow] = color(Iyellow);
+[oSumR, oSumG, oSumB,bdRG,bdRB,bdGB, colororange] = color(Iorange);
+%template = tmatch(I); % returns string name of detected fruit.
 
 
 

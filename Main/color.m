@@ -55,16 +55,18 @@ title("BLUE")
     title('blue image')
     if(dRG/dGB >2 && SumB <SumR )
         color = 1; %RED
-    elseif(dRG/dGB <0.1)
+    elseif(SumG > SumR && SumG > SumB)
         color = 2;%GREEN
-    elseif(SumB >SumR && SumB >SumG)
+    elseif(SumB >SumR && SumB >SumG && SumG>SumR)
         color = 3;%BLUE
-    elseif(dRG/dGB <1 && dRG/dGB >=0.1)
+    elseif(dRG/dGB <1 && dRG/dGB >=0.1 && SumG>SumB && SumR>SumG)
         color = 4;%YELLOW
-    elseif(dRG/dGB >1)
+    elseif(dRG/dGB >1 && SumG> SumB && SumR > SumG)
         color = 5; %ORANGE
+    elseif(SumR >SumG && SumB >SumG)
+        color = 6; %PURPLE
     else 
-        color = 6;
+        color = 7;
     end
         
 %{

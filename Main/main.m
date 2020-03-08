@@ -1,7 +1,10 @@
 %% Final Project Program
 clear
 close all
-Iblue = imread('blue_fruit.jpg');
+
+
+%% COLOR TESTING
+Iblue = imread('blue.jpg');
 Iyellow=imread('pooh.png');
 Igreen = imread('brocchampton.jpg');
 Ired = imread('lobster.jpeg');
@@ -15,6 +18,12 @@ Ipurple = imread('purple_vikings.jpg');
 [ySumR, ySumG, ySumB,ydRG,ydRB,ydGB, coloryellow] = color(Iyellow);
 [oSumR, oSumG, oSumB,odRG,odRB,odGB, colororange] = color(Iorange);
 [pSumR, pSumG, pSumB,pdRG,pdRB,pdGB, colorpurple] = color(Ipurple);
+
+
+%% SHAPE TESTING
+
+
+
 %template = tmatch(I); % returns string name of detected fruit.
 
 

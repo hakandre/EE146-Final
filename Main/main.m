@@ -1,7 +1,7 @@
 %% Final Project Program
 clear
 close all
-Iblue = imread('blue.jpg');
+Iblue = imread('blue_fruit.jpg');
 Iyellow=imread('pooh.png');
 Igreen = imread('brocchampton.jpg');
 Ired = imread('lobster.jpeg');

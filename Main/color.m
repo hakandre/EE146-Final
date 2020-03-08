@@ -57,7 +57,7 @@ title("BLUE")
         color = 1; %RED
     elseif(SumG > SumR && SumG > SumB)
         color = 2;%GREEN
-    elseif(SumB >SumR && SumB >SumG && SumG>SumR)
+    elseif(SumB >SumR && SumB >SumG && dRB> dRG) %added dRB>80 to differentiate purple 
         color = 3;%BLUE
     elseif(dRG/dGB <1 && dRG/dGB >=0.1 && SumG>SumB && SumR>SumG)
         color = 4;%YELLOW

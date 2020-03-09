@@ -5,10 +5,10 @@ close all
 
 %% COLOR TESTING
 Iblue = imread('blue.jpg');
-Iyellow=imread('pooh.png');
-Igreen = imread('brocchampton.jpg');
-Ired = imread('Appfel.jpg');
-Iorange = imread('Orange.jpg');
+Iyellow=imread('TestFruits/pooh.png');
+Igreen = imread('TestFruits/brocchampton.jpg');
+Ired = imread('TestFruits/Appfel.jpg');
+Iorange = imread('TestFruits/Orange.jpg');
 Ipurple = imread('purple_vikings.jpg');
 %imshow(I)
 

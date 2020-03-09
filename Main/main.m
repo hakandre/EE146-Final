@@ -7,8 +7,8 @@ close all
 Iblue = imread('blue.jpg');
 Iyellow=imread('pooh.png');
 Igreen = imread('brocchampton.jpg');
-Ired = imread('lobster.jpeg');
-Iorange = imread('carrot.png');
+Ired = imread('Appfel.jpg');
+Iorange = imread('apple.png');
 Ipurple = imread('purple_vikings.jpg');
 %imshow(I)
 
@@ -21,8 +21,8 @@ Ipurple = imread('purple_vikings.jpg');
 
 
 %% SHAPE TESTING
-
-
+Icircle = imread('circles.png')
+[circles,rad] = shape(Icircle)
 
 %template = tmatch(I); % returns string name of detected fruit.
 

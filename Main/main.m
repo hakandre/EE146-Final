@@ -4,12 +4,12 @@ close all
 
 
 %% COLOR TESTING
-Iblue = imread('blue.jpg');
-Iyellow=imread('TestFruits/pooh.png');
+Iblue = imread('TestFruits/blue.jpg');
+Iyellow=imread('TestFruits/yellemon.jpeg');
 Igreen = imread('TestFruits/brocchampton.jpg');
 Ired = imread('TestFruits/Appfel.jpg');
 Iorange = imread('TestFruits/Orange.jpg');
-Ipurple = imread('purple_vikings.jpg');
+Ipurple = imread('TestFruits/purple_vikings.jpg');
 %imshow(I)
 
 [bSumR, bSumG, bSumB,bdRG,bdRB,bdGB, colorBlue] = color(Iblue); % 1 - Red, 2 - Green, 3 - Blue, 4 - Yellow, 5 - Orange, 6 - Purple
@@ -21,8 +21,8 @@ Ipurple = imread('purple_vikings.jpg');
 
 
 %% SHAPE TESTING
-Icircle = imread('grape.png');
-[circles,rad,s] = shape(Icircle)
+Icircle = imread('TestFruits/yellemon.jpeg');
+[majorA, minorA, xCenters, yCenters] = shape(Icircle);
 
 
 %template = tmatch(I); % returns string name of detected fruit.

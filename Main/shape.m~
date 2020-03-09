@@ -1,14 +1,14 @@
 function [A, B,Xc,Yc] = shape(I)
-Ig = rgb2gray(I);
-t = graythresh(Ig);
-Ibin = imbinarize(Ig,'adaptive','ForegroundPolarity','dark','Sensitivity',t);
+Ig = rgb2grays
+t = graythresh(I(:,:,1));
+I = imbinarize(I(:,:,1),'adaptive','ForegroundPolarity','dark','Sensitivity',t);
 % [centers , radii]= imfindcircles(I, [10 700])
 % 
  figure
-    imshow(Ibin);
+    imshow(I);
 %     viscircles(centers, radii,'EdgeColor','b');
 %     
-    s = regionprops(Ibin,{...
+    s = regionprops(I,{...
     'Centroid',...
     'MajorAxisLength',...
     'MinorAxisLength',...
@@ -18,8 +18,8 @@ t = linspace(0,2*pi,50);
 i = 1;
 flag =0;
 for n = 1:length(s)
-    if(s(n).MajorAxisLength <= length(Ibin(:,1)) && s(n).MajorAxisLength <=length(Ibin(1,:)))
-        if(s(n).MajorAxisLength > length(Ibin(:,1))*0.1 && s(n).MajorAxisLength > length(Ibin(1,:))*0.1)
+    if(s(n).MajorAxisLength <= length(I(:,1)) && s(n).MajorAxisLength <=length(I(1,:)))
+        if(s(n).MajorAxisLength > length(I(:,1))*0.1 && s(n).MajorAxisLength > length(I(1,:))*0.1)
             s_norm(i) = s(n);
             i = i +1;
             flag = 1;

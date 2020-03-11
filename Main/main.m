@@ -21,7 +21,7 @@ Ipurple = imread('TestFruits/purple_vikings.jpg');
 
 
 %% SHAPE TESTING
-Icircle = imread('TestFruits/yellemon.jpeg');
+Icircle = imread('TestFruits/eggplant.jpg');
 [majorA, minorA, xCenters, yCenters] = shape(Icircle);
 
 

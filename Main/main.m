@@ -4,8 +4,9 @@ close all
 
 
 %% COLOR TESTING
+close all
 Iblue = imread('TestFruits/blue.jpg');
-Iyellow=imread('TestFruits/yellemon.jpeg');
+Iyellow=imread('TestFruits/lem.jpg');
 Igreen = imread('TestFruits/brocchampton.jpg');
 Ired = imread('TestFruits/Appfel.jpg');
 Iorange = imread('TestFruits/Orange.jpg');
@@ -21,7 +22,8 @@ Ipurple = imread('TestFruits/purple_vikings.jpg');
 
 
 %% SHAPE TESTING
-Icircle = imread('TestFruits/yellemon.jpeg');
+close all
+Icircle = imread('TestFruits/blueberry.jpg');
 [majorA, minorA, xCenters, yCenters] = shape(Icircle);
 
 

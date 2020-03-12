@@ -1,11 +1,12 @@
 function [A, B,Xc,Yc] = shape(I)
 Ig = rgb2gray(I);
 t = graythresh(Ig);
+Ie = edge(Ig,'canny',t);
 Ibin = imbinarize(Ig,'adaptive','ForegroundPolarity','dark','Sensitivity',t);
 % [centers , radii]= imfindcircles(I, [10 700])
 % 
  figure
-    imshow(Ibin);
+    imshow(Ie);
 %     viscircles(centers, radii,'EdgeColor','b');
 %     
     s = regionprops(Ibin,{...

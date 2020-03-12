@@ -1,0 +1,41 @@
+function [fruit] = fruit(color,shape)
+%colors 1-Red, 2-Green, 3-Blue, 4-Yellow, 5-Orange, 6-Purple
+%shape Features: Circle, Oval, 
+fruits = zeros(1,7);
+
+if(color==1)%red
+    fruits(1) = fruits(1) +4;
+    if(shape ==1) %Circle
+        fruits(1) = fruits(1) + 5;
+    elseif(shape ==2)
+        fruits(1) = fruits(1);
+    end
+end
+if(color == 2)%Green
+    fruits(2) = fruits(2) +3;
+    
+end
+if(color == 3)%Blue
+    fruits(3) = fruits(3) +4;
+    if(shape == 2)
+        fruits(6) = fruits(6) +2;
+    end
+end
+if(color == 4)%Yellow
+    fruits(4) = fruits(4) +1;
+    if(shape == 1) 
+        fruits(5) = fruits(5) +4; 
+    elseif(shape== 0)
+        fruits(4)=fruits(4)+ 3;
+    end
+            
+end
+if(color == 5)%Orange
+    fruits(5) = fruits(5) +1;
+end
+end
+[similarity, index] = max(fruits);
+
+fruit = index;
+end
+

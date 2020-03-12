@@ -1,14 +1,22 @@
-function [A, B,Xc,Yc] = shape(I)
-Ig = rgb2grays
-t = graythresh(I(:,:,1));
-I = imbinarize(I(:,:,1),'adaptive','ForegroundPolarity','dark','Sensitivity',t);
+function [A, B,Xc,Yc,s, Shape] = shape(I)
+Ig = rgb2gray(I);
+
+Ie = edge(Ig,'canny',0.1);
+t = graythresh(Ig);
+Ibin = imbinarize(Ig,'adaptive','ForegroundPolarity','dark','Sensitivity',t);
 % [centers , radii]= imfindcircles(I, [10 700])
 % 
  figure
-    imshow(I);
+ imshow(Ie);
+ title("Edge Detection")
+ figure
+ imshow(Ibin);
+ title("Binarized Image")
+ hold on
+ 
 %     viscircles(centers, radii,'EdgeColor','b');
 %     
-    s = regionprops(I,{...
+    s = regionprops(Ie,{...
     'Centroid',...
     'MajorAxisLength',...
     'MinorAxisLength',...
@@ -18,17 +26,15 @@ t = linspace(0,2*pi,50);
 i = 1;
 flag =0;
 for n = 1:length(s)
-    if(s(n).MajorAxisLength <= length(I(:,1)) && s(n).MajorAxisLength <=length(I(1,:)))
-        if(s(n).MajorAxisLength > length(I(:,1))*0.1 && s(n).MajorAxisLength > length(I(1,:))*0.1)
+    if((s(n).MajorAxisLength <= length(Ibin(:,1)) && s(n).MajorAxisLength <= length(Ibin(1,:))))
+        if(s(n).MajorAxisLength > length(Ibin(:,1))*0.05 && s(n).MajorAxisLength > length(Ibin(1,:))*0.05)
             s_norm(i) = s(n);
             i = i +1;
             flag = 1;
         end
     end
-    
-    
 end
-hold on
+
 if(flag== 0)
     s_norm = [];
 end
@@ -46,18 +52,23 @@ if(~isempty(s_norm))
 else
     A = [0];
     B = [0];
-    Xc = [0];
-    Yc = [0];
+    Xc= [0];
+    Yc= [0];
 end
-
 hold off
-%RETURN SHAPE DETECTED
-% 1. Circular
-% 2. Banana
-% 3. Pear
 
 
+[value, index] = max(B);
+axisRatio = A(index)/B(index);
 
-
+axisBig = 0;
+if(~isempty(A) )
+    Shape = 0; % No shape
+elseif(axisBig > 1.4)
+    Shape = 2; %Ellipse
+elseif(axisBig <=1.4)
+    Shape = 1; %CIRCLE
+else 
+    Shape = -1;
 end
-
+end

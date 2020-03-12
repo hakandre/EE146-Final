@@ -1,28 +1,26 @@
-function [SumR, SumG, SumB,dRG,dRB,dGB, color] = color(I)
+function [color] = color(I)
+
 [R,G,B] = imsplit(I);
 dim = size(I);
 figure
     subplot(1,3,1)
-
 imhist(R);
-title("RED")
+title("Red Histogram")
     subplot(1,3,2)
 
 imhist(G);
-title("GREEN")
+title("Green Histogram")
     subplot(1,3,3)
 imhist(B);
-title("BLUE")
-% 
-%     SumR = sum(imhist(R));
-%     SumG = sum(imhist(G));
-%     SumB = sum(imhist(B));
+title("Blue Histogram")
+figure
     SumR =0;
     hR=imhist(R);
     for i = 1:length(hR)
         SumR = (i)*hR(i) + SumR;
     end
-        SumR = SumR/(dim(:,1)*dim(:,2));
+    SumR = SumR/(dim(:,1)*dim(:,2));
+    
     SumG = 0;
     hG = imhist(G);
     for i = 1:length(hG)

@@ -1,22 +1,27 @@
-function [A, B,Xc,Yc] = shape(I)
-
-
-
-
+function [A, B,Xc,Yc,s, Shape] = shape(I)
 Ig = rgb2gray(I);
+Ig =medfilt2(Ig);
+Hg = fspecial('average');
+%Ig = imfilter(Ig, Hg);
+
+
+
 Ie = edge(Ig,'canny',0.1);
 t = graythresh(Ig);
-Ibin = imbinarize(Ig,'adaptive','ForegroundPolarity','dark','Sensitivity',t);
+Ibin = imbinarize(Ig,'adaptive','ForegroundPolarity','dark','Sensitivity',t*1.2);
 % [centers , radii]= imfindcircles(I, [10 700])
-% 
-figure(1)
- imshow(Ie);
- figure(2)
+
+ figure
  imshow(Ibin);
+ title("Binarized Image")
+ figure
+ imshow(Ie);
+ title("Edge Detection")
+ hold on
  
 %     viscircles(centers, radii,'EdgeColor','b');
 %     
-    s = regionprops(Ibin,{...
+    s = regionprops(Ie,{...
     'Centroid',...
     'MajorAxisLength',...
     'MinorAxisLength',...
@@ -26,21 +31,18 @@ t = linspace(0,2*pi,50);
 i = 1;
 flag =0;
 for n = 1:length(s)
-    if((s(n).MajorAxisLength <= length(Ibin(:,1)) && s(n).MajorAxisLength <=length(Ibin(1,:))))
-        if(s(n).MajorAxisLength > length(Ibin(:,1))*0.1 && s(n).MajorAxisLength > length(Ibin(1,:))*0.1)
+    if((s(n).MajorAxisLength <= length(Ibin(:,1))+20 && s(n).MajorAxisLength <= length(Ibin(1,:))+20))
+        if(s(n).MajorAxisLength > length(Ibin(:,1))*0.05 && s(n).MajorAxisLength > length(Ibin(1,:))*0.05)
             s_norm(i) = s(n);
             i = i +1;
             flag = 1;
         end
     end
-    
-    
 end
-hold on
+
 if(flag== 0)
     s_norm = [];
 end
-figure(2)
 if(~isempty(s_norm))
     for k = 1:length(s_norm)
         A(k) = s_norm(k).MajorAxisLength/2;
@@ -55,18 +57,25 @@ if(~isempty(s_norm))
 else
     A = [0];
     B = [0];
-    Xc = [0];
-    Yc = [0];
+    Xc= [0];
+    Yc= [0];
 end
-
 hold off
-%RETURN SHAPE DETECTED
-% 1. Circular
-% 2. Banana
-% 3. Pear
 
 
+[value, index] = max(B)
+axisBig = A(index)/B(index)
 
-
+if(isempty(A))
+    Shape = 0; % No shape
+    display("No shape detected")
+elseif(axisBig > 1.3)
+    Shape = 2; %Ell5pse
+    display("Ellipse")
+elseif(axisBig <=1.3)
+    Shape = 1; %CIRCLE
+    display("Circle")
+else 
+    Shape = -1;
 end
-
+end
